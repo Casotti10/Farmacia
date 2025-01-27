@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -18,15 +18,15 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "O Atributo categoria é obrigatório")
-	    private String categoria;
+
+	@NotBlank(message = "O Atributo categoria é obrigatório")
+	@Size(min = 4, max = 20, message = "O Nome da categoria deve ter entre 4 e 20 caracteres.")
+	private String categoria;
 	
 	
-	@NotBlank(message = "O atributo categoria deve seer obrigatório")
-	@Size(min = 4, max = 50, message = "O Nome da descrição deve ter entre 4 e 50 caracteres.")
+	@NotBlank(message = "O atributo descricao deve ser obrigatório")
 	private String descricao;
 
-	
 	
 	public Long getId() {
 		return id;
@@ -36,13 +36,6 @@ public class Categoria {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public String getDescricao() {
 		return descricao;
@@ -52,4 +45,11 @@ public class Categoria {
 		this.descricao = descricao;
 	}
 
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 }

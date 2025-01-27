@@ -31,7 +31,7 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
-	@GetMapping
+	@GetMapping("/all")
 	ResponseEntity<List<Categoria>> getAll() {
 		return ResponseEntity.ok(categoriaRepository.findAll());
 	}
@@ -45,11 +45,6 @@ public class CategoriaController {
 	@GetMapping("/nome/{nome}") // buscar por nome
 	public ResponseEntity<List<Categoria>> getByNome(@PathVariable String nome) {
 		return ResponseEntity.ok(categoriaRepository.findAllByCategoriaContainingIgnoreCase(nome));
-	}
-
-	@GetMapping("/descricao/{descricao}") // buscar por descricao
-	public ResponseEntity<List<Categoria>> getByDescricao(@PathVariable String descricao) {
-		return ResponseEntity.ok(categoriaRepository.findAllByCategoriaContainingIgnoreCase(descricao));
 	}
 
 	@PostMapping("/cadastrar")
